@@ -9,25 +9,25 @@
     <body class="bodyreservation">
         <h1 class="heads">Reservar quarto</h1>
         <div class="container" id="container">
-            <form action="reservationoverviewpage.html" method="POST">
+            <form action="" method="POST">
                 <div class="form-group">
                     <label for="exampleFormControlInput1">CPF</label>
-                    <input name="CPF" type="text" class="form-control" id="exampleFormControlInput1" placeholder="XXX.XXX.XXX-XX">
+                    <input required name="CPF" type="text" class="form-control" id="exampleFormControlInput1" placeholder="XXX.XXX.XXX-XX">
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Selecione o tipo do quarto</label>
-                    <select name="Category" class="form-control" id="exampleFormControlSelect1">
+                    <select required name="Category" class="form-control" id="exampleFormControlSelect1">
                         <option>Individual</option>
                         <option>Duplo</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Data de entrada</label>
-                    <input name="enter_date" type="date" class="form-control" id="exampleFormControlInput1">
+                    <input required name="enter_date" type="date" class="form-control" id="exampleFormControlInput1">
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Data de saida</label>
-                    <input name="leave_date" type="date" class="form-control" id="exampleFormControlInput1">
+                    <input required name="leave_date" type="date" class="form-control" id="exampleFormControlInput1">
                 </div>
                 <button type="submit" class="btn btn-primary">Reservar</button>
             </form>
@@ -35,10 +35,62 @@
     </body>
 
     <?php
-        if (isset($_POST['CPF'])){
-            echo '<script type="text/javascript">';
-            echo "document.write('CPF PREENCHIDO')";
-            echo '</script>';
+
+
+
+        function calcdays($enter,$leave){
+            $d1 = strtotime($enter); 
+            $d2 = strtotime($leave);
+
+            $dataFinal = ($d2 - $d1) /86400;
+
+            return $dataFinal;
+
         }
+        
+        function calctax($categoryroom, $totaldays){
+            static $individualroom_price =100.0;
+            static $duploroom_price = 150.0;
+
+            var_dump($totaldays);
+            $total = 0 ;
+            var_dump($total);
+            if($categoryroom == "Individual"){
+                $total = $individualroom_price *1.05;
+                $total += 30.0 * $totaldays;
+                
+            }
+            
+            if($categoryroom == "Duplo"){
+                $total = $duploroom_price*1.05;
+                $total += 30.0 * $totaldays;
+                
+            }
+
+            var_dump($total);
+            return $total;
+        }
+        
+        if (isset($_POST['CPF']) && isset($_POST['Category'])&& isset($_POST['enter_date'])&& isset($_POST['leave_date'])){
+            $cpf = $_POST['CPF'];
+            $category = $_POST['Category'];
+            $enterdate = $_POST['enter_date'];
+            $leavedate = $_POST['leave_date'];
+
+            $totaldays = calcdays($enterdate,$leavedate);
+            
+            
+            $finalprice = calctax($category, $totaldays);
+            
+            echo '<script type="text/javascript">';
+            echo " document.write('".$cpf.$category.$enterdate.$leavedate.$finalprice."') ";
+            echo '</script>';
+            
+            
+
+
+
+        }
+
     ?>
 </html>
