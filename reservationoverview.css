@@ -1,0 +1,26 @@
+html {
+    background: #ffffff;
+}
+
+body {
+    border: 1px solid black;
+    width: 800px;
+    height: 100%;
+    background: #e9f2f5;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    margin-top: 30px !important;
+    background: #d4e4ff !important;
+    padding: 30px;
+}
+
+#heads {
+    text-align: center;
+    margin-left: 100px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
