@@ -23,14 +23,14 @@ function calctax($categoryRoomf, $totalDaysf, $qtHospedesf)
     var_dump($total);
     if ($categoryRoomf == "Individual") {
         $total = $individualRoomPrice * $totalDaysf;
-        $total += $total * 1.05;
+        $total += $total * 0.05;
         $total += (10.0 * $qtHospedesf) * $totalDaysf;
         $total += 20 * $totalDaysf;
     }
 
     if ($categoryRoomf == "Duplo") {
         $total = $duploRoomPrice * $totalDaysf;
-        $total += $total * 1.05;
+        $total += $total * 0.05;
         $total += (10 * $qtHospedesf) * $totalDaysf;
         $total += 20 * $totalDaysf;
     }
