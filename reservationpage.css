@@ -14,6 +14,8 @@ h1 {
 
 .container {
     margin-top: 30px !important;
+    border-radius: 20px;
+    border: solid 1px #007bff;
     background: #d4e4ff !important;
     padding: 30px;
 }
