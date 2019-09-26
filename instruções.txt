@@ -1,5 +1,9 @@
 Instruções:
 
+Acesse https://github.com/felipepradobastos/DesafioFoco 
+
+Realize o git clone do branch master ou download do repositorio para obtenção do projeto.
+
 Autor: Felipe Prado Bastos
 
 Desafio 1 Foco Multimidia 
