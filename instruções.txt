@@ -1,12 +1,12 @@
+Autor: Felipe Prado Bastos
+
+Desafio 1 Foco Multimidia 
+
 Instruções:
 
 Acesse https://github.com/felipepradobastos/DesafioFoco 
 
 Realize o git clone do branch master ou download do repositorio para obtenção do projeto.
-
-Autor: Felipe Prado Bastos
-
-Desafio 1 Foco Multimidia 
 
 Para utilização da Solução tenha instalado o php em sua maquina e invoque o servidor
 local do php utilizando o comando "php -S localhost:8000" sendo 8000 a porta desejada
