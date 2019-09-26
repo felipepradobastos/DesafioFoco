@@ -1,3 +1,5 @@
+/* Estilos da Pagina Overview da Reserva */
+
 html {
     background: #e9f2f5;
 }
@@ -5,7 +7,7 @@ html {
 body {
     border: 1px solid black;
     margin: auto;
-    margin-top: 150px;
+    margin-top: 130px !important;
     width: 800px;
     height: 100%;
     background: #e9f2f5;

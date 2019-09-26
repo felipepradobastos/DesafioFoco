@@ -18,7 +18,12 @@ function calcdays($enter, $leave)
     // Variavel $totalDaysr recebe a diferença entre $d1 e $d2 dividido por 86400 quantidade de segundos em um dia
     $totalDaysr = ($d2 - $d1) / 86400;
 
-    return $totalDaysr;
+    if($totalDaysr==0){
+        return 1;
+    }else{
+        return $totalDaysr;
+    }
+
 }
 
 function defineidroom($category){
@@ -101,7 +106,6 @@ if (isset($_POST['CPF']) && isset($_POST['Category']) && isset($_POST['enter_dat
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
-    echo "Connected successfully";
 
     // Por algum motivo não consegui inserir diretamente nos parametros da variavel $sql os get
     // Então criei essas duas variaveis resgatando os atributos do elemento $reserva e utilizei os mesmos
@@ -111,6 +115,9 @@ if (isset($_POST['CPF']) && isset($_POST['Category']) && isset($_POST['enter_dat
     $sqlidq=$reserva->__getIdQuarto();
     
     // Script de Inseração de uma Reserva no Bando de Dados
+    // Estou utilizando este valor 1 pois é o id de um registro que criei para testes
+    // e tambem para n ter a necessidade da criação de funções de select retornando o id do cliente
+    // por este motivo também que eu não utilizei herança nem resgatei os dados do banco
     $sql = "INSERT INTO reserva (precototal, id_cliente, id_quarto) VALUES ($sqlpt, 1, $sqlidq)";
     
 
@@ -141,7 +148,7 @@ if (isset($_POST['CPF']) && isset($_POST['Category']) && isset($_POST['enter_dat
 </head>
 <!-- Inicio do Body -->
 <body class="bodyreservation">
-    <h1 class="heads">Detalhes da reserva</h1>
+    <h1 class="heads">Reserva Realizada</h1>
     <div class="container" id="container">
         <form>
             <div class="form-group">
@@ -153,7 +160,15 @@ if (isset($_POST['CPF']) && isset($_POST['Category']) && isset($_POST['enter_dat
             </div>
             <div class="form-group">
                 <label for="disabledInput">Preço total:</label>
-                <input class="form-control" id="disabledInput" type="text" placeholder="" disabled value="<?php echo $reserva->__getTotalPrice() ?>">
+                <input class="form-control" id="disabledInput" type="text" placeholder="" disabled value="<?php echo $reserva->__getTotalPrice()." R$" ?>">
+            </div>
+            <div class="form-group">
+                <label for="disabledInput">Quarto:</label>
+                <input class="form-control" id="disabledInput" type="text" placeholder="" disabled value="<?php echo $reserva->__getCategory() ?>">
+            </div>
+            <div class="form-group">
+                <label for="disabledInput">Número de Hospedes:</label>
+                <input class="form-control" id="disabledInput" type="text" placeholder="" disabled value="<?php echo $reserva->__getQtHospedes() ?>">
             </div>
         </form>
     </div>

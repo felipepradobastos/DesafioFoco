@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="reservationpage.css">
     <!-- Importação do Arquivo do Script de Validação/Máscara retirado do StackOverflow do arquivo "validation.js -->
     <script type="text/javascript" src="validation.js"></script>
+    <!-- Importação do arquivo do Script de validação de data propio -->
+    <script type="text/javascript" src="datevalidator.js"></script>
+
 
 </head>
 <!-- Inicio do Body -->
@@ -25,7 +28,7 @@
         <div class="row justify-content-md-center">
             <div class="col col-lg 2">
                 <!-- Form da Reserva com a declaração dos NAMES dos Inputs -->
-                <form action="reservationoverviewpage.php" method="POST">
+                <form action="reservationoverviewpage.php" method="POST" id="form">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">CPF</label>
                         <input required name="CPF" type="text" class="form-control" id="exampleFormControlInput1" onBlur="ValidarCPF(CPF);" onKeyPress="MascaraCPF(CPF);" maxlength="14">
@@ -43,13 +46,13 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Data de entrada</label>
-                        <input required name="enter_date" type="date" class="form-control" id="exampleFormControlInput1">
+                        <input required name="enter_date" type="date" class="form-control" id="enter_date">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Data de saída</label>
-                        <input required name="leave_date" type="date" class="form-control" id="exampleFormControlInput1">
+                        <input required name="leave_date" type="date" class="form-control" id="leave_date">
                     </div>
-                    <button type="submit" class="btn btn-primary">Reservar</button>
+                    <button type="button" class="btn btn-primary" onclick="finaldatevalidation();">Reservar</button>
                 </form>
             </div>
             <!-- Implementação do Boostrap Grid na Coluna da imagem do logo do Jamaica Hotel -->

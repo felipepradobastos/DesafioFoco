@@ -1,9 +1,12 @@
 <?php
+// Classe Reserva
+// Existem variaveis existentes de outras entidades no banco so para facilitar a logica de progamação
+
 class reserva{
 
-private $id;
+// Declaração das Variaveis
+
 private $totalPrice;
-private $idCliente;
 private $idQuarto;
 private $category;
 private $totalDays;
